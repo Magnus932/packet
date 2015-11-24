@@ -156,29 +156,3 @@ class TCPPacket(_packet.tcp, Sender):
 		self.tcp_win = 44200
 		self.tcp_csum = 0
 		self.tcp_urg_ptr = 0
-
-'''
-	Creating deeper functionality on top of these
-	wrappers can consist of; ARP spoofers, ARP scanners,
-	TCP hijackers that pipes the data to an SSL decrypter/encrypter
-	or maybe just some fun UDP packets that crash a game, just for
-	the kicks of it. All of the above methods are an ease just filling
-	out a few fields in a dictionary type before typing obj.sendto(...)
-	combining both a packet capturer and a raw packet.
-
-	A simple UDP example is provided below;
-
-	args = {
-		"udp_src" 	: 1000,
-		"udp_dst" 	: 2000,
-		"ip_source"	: "XXXXXXXXXXX",
-		"ip_dest" 	: "XXXXXXXXXXX",
-		"mac_src"	: (0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX),
-		"mac_dst"	: (0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX),
-		"payload"	: b"Hello world from packet"
-	}
-	obj = UDPPacket(args)
-	obj.calc_len()
-	obj.calc_csum()
-	obj.sendto(obj.to_bytes(), ("device", 0))
-'''
